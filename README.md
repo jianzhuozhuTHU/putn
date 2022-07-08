@@ -5,10 +5,10 @@ PUTN: A Plane-fitting based Uneven Terrain Navigation Framework.
 **PUTN** is a plane-fitting based uneven terrain navigation framework, which allows **UGV** to traverse different kinds of **unstructured** and **complex** environments outdoors. 
 
 <p align = "center">
-<img src="pictures/slope.gif" width = "300" height = "158" border="5" />
-<img src="pictures/forest.gif" width = "300" height = "158" border="5" />
-<img src="pictures/flat_bridge.gif" width = "300" height = "158" border="5" />
-<img src="pictures/arch_bridge.gif" width = "300" height = "158" border="5" />
+<img src="pictures/slope.gif" width = "350" height = "184" border="5" />
+<img src="pictures/forest.gif" width = "350" height = "184" border="5" />
+<img src="pictures/flat_bridge.gif" width = "350" height = "184" border="5" />
+<img src="pictures/arch_bridge.gif" width = "350" height = "184" border="5" />
 </p>
 
 
