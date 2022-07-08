@@ -21,7 +21,7 @@ PUTN consists of three parts:
 - Local Planning Module (Implemented by **NMPC**)
 
 <p align = "center">
-<img src="pictures/framework.png" width = "750" height = "310" border="5" />
+<img src="pictures/framework.png" width = "650" height = "360" border="5" />
 </p>
 
 **Video Links:** [YouTube](https://www.youtube.com/watch?v=3ZK-Ut29hLI), [bilibili](https://www.bilibili.com/video/BV1bZ4y1r7na?spm_id_from=333.337.search-card.all.click&vd_source=e11d8557ce1350ea4930d15280abb7e2) (for Mainland China)
