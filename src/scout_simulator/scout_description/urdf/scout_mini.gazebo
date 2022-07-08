@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<!--
+Reference:
+    [1] https://answers.ros.org/question/246914/four-wheeled-skid-steering-in-gazebo-and-ros-using-gazebo-ros-control/
+    [2] https://answers.ros.org/question/10119/gazebo-controller-for-skid-steering/
+    [3] https://answers.ros.org/question/9640/rotation-error-in-gazebo-simulation/
+    [4] https://www.youtube.com/watch?v=fuRAv6PDwdw
+-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find scout_description)/urdf/scout_wheel.gazebo" />
+
+    <!-- Additional definitions for simulation -->
+    <!-- <gazebo reference="base_link">
+        <material>Gazebo/Grey</material>
+    </gazebo> -->
+
+    <!-- Actuator configurations -->
+    <xacro:scout_wheel_transmission wheel_prefix="front_right" />
+    <xacro:scout_wheel_transmission wheel_prefix="front_left" />
+    <xacro:scout_wheel_transmission wheel_prefix="rear_left" />
+    <xacro:scout_wheel_transmission wheel_prefix="rear_right" />
+
+    <!-- Controller configurations -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>$(arg robot_namespace)</robotNamespace>
+        </plugin>
+    </gazebo>
+
+    <!-- kp spring constant, kd damping constant -->
+    <gazebo>
+        <mu1 value="1.0"/>
+        <mu2 value="0.9"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <fdir1 value="1 0 0"/>
+        <minDepth value="0.001" />
+        <maxContacts value="64"/>
+    </gazebo>
+
+    <!-- <gazebo>
+        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+            <updateRate>100.0</updateRate>
+            <robotNamespace></robotNamespace>
+            <leftFrontJoint>front_left_wheel</leftFrontJoint>
+            <rightFrontJoint>front_right_wheel</rightFrontJoint>
+            <leftRearJoint>rear_left_wheel</leftRearJoint>
+            <rightRearJoint>rear_right_wheel</rightRearJoint>
+            <wheelSeparation>4</wheelSeparation>
+            <wheelDiameter>0.32918</wheelDiameter>
+            <robotBaseFrame>base_link</robotBaseFrame>
+            <torque>1000</torque>
+            <commandTopic>cmd_vel</commandTopic>
+            <broadcastTF>true</broadcastTF>
+            <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <covariance_x>0.000100</covariance_x>
+            <covariance_y>0.000100</covariance_y>
+            <covariance_yaw>0.010000</covariance_yaw>
+        </plugin>
+    </gazebo> -->
+
+    <!-- <gazebo>
+        <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+            <commandTopic>cmd_vel</commandTopic>
+            <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <odometryRate>20.0</odometryRate>
+            <robotBaseFrame>base_footprint</robotBaseFrame>
+        </plugin>
+    </gazebo> -->
+</robot>

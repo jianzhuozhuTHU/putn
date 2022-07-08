@@ -1,0 +1,52 @@
+<launch>
+  <arg name="scene" default="map1"/>
+
+  <include file="$(find putn_map)/launch/$(arg scene).launch"/>
+
+  <include file="$(find scout_gazebo_sim)/launch/spawn_scout_v2.launch">
+    <arg name="x" value="0"/>
+    <arg name="y" value="0"/>
+    <arg name="z" value="1"/>
+  </include>
+
+  <include file="$(find aloam_velodyne)/launch/aloam_velodyne_HDL_32.launch">
+	  <arg name="rviz" value="false"/>
+  </include>
+
+  <node pkg="tf" type="static_transform_publisher" name="world_to_camera_init" args="0 0 0 0 0 0 /world /camera_init 10" /><!--10ms-->
+  <node pkg="tf" type="static_transform_publisher" name="camera_to_link" args="0 0 -0.4 0 0 0 /aft_mapped /base_link 10" />
+
+  <node pkg="waypoint_generator" name="waypoint_generator" type="waypoint_generator">
+      <remap from="~goal" to="/goal"/>
+      <param name="waypoint_type" value="manual-lonely-waypoint"/>    
+  </node>
+
+  <node pkg="putn" type="global_planning_node" name="global_planning_node" output="screen" required = "true">
+      <remap from="~waypoints"       to="/waypoint_generator/waypoints"/>
+      <remap from="~map"             to="/laser_cloud_map"/> 
+
+      <rosparam command="load" file="$(find putn)/config/for_simulation/$(arg scene).yaml"/>
+  </node>
+
+  <node pkg="putn" type="local_obs_node" name="local_obs_node" output="screen" required = "true">
+      <remap from="~map"             to="/velodyne_points"/> 
+
+      <param name="map/resolution"      value="0.1" />
+      <param name="map/local_x_l"       value="-1.8"/>
+      <param name="map/local_x_u"       value="1.8"/>
+      <param name="map/local_y_l"       value="-1.8"/>
+      <param name="map/local_y_u"       value="1.8"/>
+      <param name="map/local_z_l"       value="-0.5"/>
+      <param name="map/local_z_u"       value="0.4"/>
+  </node>
+
+  <node pkg="gpr" type="gpr_path" name="gpr_path" output="screen" required="true">
+      <param name="file/cfg_path" type="string" value="$(find gpr)/config/hyperparam.txt"/>
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find putn_launch)/rviz_config/simulation.rviz" required="true"/>
+
+  <node name="local_planner" pkg="local_planner" type="local_planner.py" launch-prefix="gnome-terminal --title=local_planner -x"/>
+  <node name="controller" pkg="local_planner" type="controller.py" launch-prefix="gnome-terminal --title=controller -x"/>
+
+</launch>

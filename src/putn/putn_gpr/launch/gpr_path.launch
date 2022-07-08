@@ -1,0 +1,4 @@
+<launch>
+   <node pkg="gaussian_process_regression" type="gpr_path" name="gpr_path" output="screen">
+   </node>
+</launch>

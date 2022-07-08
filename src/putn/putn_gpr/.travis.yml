@@ -1,0 +1,70 @@
+# Template .travis.yml file for integrating a ROS package with Travis continuous
+# integration.
+#
+# Author: Felix Duvallet <felixd@gmail.com>
+
+
+# NOTE: The build lifecycle on Travis.ci is something like this:
+#    before_install
+#    install
+#    before_script
+#    script
+#    after_success or after_failure
+#    after_script
+#    OPTIONAL before_deploy
+#    OPTIONAL deploy
+#    OPTIONAL after_deploy
+
+
+# Use ubuntu trusty (14.04) with sudo privileges.
+dist: trusty
+sudo: required
+language:
+  - python
+cache:
+  - apt
+
+# By default travis runs all python code in a virtualenv that does not contain
+# the packages installed with apt-get. As this is essential (pip doesn't contain
+# all the necessary ROS python packages), tell travis-ci to use the system-wide
+# python packages.
+virtualenv:
+    system_site_packages: true
+
+# Install system dependencies, namely ROS:
+before_install:
+  # Define some config vars.
+  - export ROS_DISTRO=indigo
+  - export ROS_CI_DESKTOP=`lsb_release -cs`  # e.g. [precise|trusty]
+  - export CI_SOURCE_PATH=$(pwd)
+  - export ROS_PARALLEL_JOBS='-j8 -l8'
+  # Install ROS
+  - sudo sh -c "echo \"deb http://packages.ros.org/ros/ubuntu $ROS_CI_DESKTOP main\" > /etc/apt/sources.list.d/ros-latest.list"
+  - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+  - sudo apt-get update -qq
+  # Install ROS
+  - sudo apt-get install -y python-catkin-pkg python-rosdep python-wstool ros-$ROS_DISTRO-catkin ros-$ROS_DISTRO-ros ros-$ROS_DISTRO-rospy ros-$ROS_DISTRO-rostest
+  - source /opt/ros/$ROS_DISTRO/setup.bash
+  # Setup for rosdep
+  - sudo rosdep init
+  - rosdep update
+
+# Set up catkin workspace to have the source code.
+# install:
+  - mkdir -p ~/catkin_ws/src
+  - cd ~/catkin_ws/src
+  - catkin_init_workspace
+  - ln -s $CI_SOURCE_PATH . # Link the repo we are testing to the new workspace
+
+before_script:
+  # Install all ROS dependencies available as ROS packages.
+  - cd ~/catkin_ws
+  - rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+
+# Build code here.
+script:
+  - cd ~/catkin_ws
+  - catkin_make
+  # Testing: Use both run_tests (to see the output) and test (to error out).
+  - catkin_make run_tests  # This always returns 0.
+  - catkin_make test  # This will return non-zero if a test fails.

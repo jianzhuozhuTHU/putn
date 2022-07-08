@@ -1,0 +1,26 @@
+map:
+  resolution: 0.1
+  map_x_l: -20.0
+  map_x_u: 20.0
+  map_y_l: -20.0
+  map_y_u: 20.0
+
+planning: 
+  step_size: 0.4
+  h_surf_car: 0.7
+
+  w_fit_plane: 1.0
+  w_flatness: 1000.0
+  w_slope: 0.1
+  w_sparsity: 1.0
+
+  ratio_max: 0.05
+  ratio_min: 0.02
+  conv_thre: 0.1152
+
+  radius_fit_plane: 0.5
+  
+ 
+
+
+

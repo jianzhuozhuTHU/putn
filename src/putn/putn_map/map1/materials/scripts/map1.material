@@ -1,0 +1,15 @@
+material Map1/Image
+{
+  receive_shadows off
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture ../textures/texture.jpg
+      }
+    }
+  }
+}
+ 

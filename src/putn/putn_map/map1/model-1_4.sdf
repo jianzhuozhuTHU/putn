@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="Map1">
+    <static>true</static>
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://map1/meshes/map1.dae</uri>
+            <scale>1.0 1.0 0.5</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://map1/meshes/map1.dae</uri>
+            <scale>1.0 1.0 0.5</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://map1/materials/scripts</uri>
+            <uri>model://map1/materials/textures</uri>
+            <name>Map1/Image</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

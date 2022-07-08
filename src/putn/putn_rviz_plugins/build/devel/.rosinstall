@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/jianzhuozhu/catkin_ws/src/rviz_plugins/build/devel/setup.sh

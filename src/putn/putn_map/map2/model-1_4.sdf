@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="Map2">
+    <static>true</static>
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://map2/meshes/map2.dae</uri>
+          </mesh>
+        </geometry>
+	<!--surface>
+	  <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>0.3</mu2>
+            </ode>
+          </friction>
+        </surface-->
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://map2/meshes/map2.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://map2/materials/scripts</uri>
+            <uri>model://map2/materials/textures</uri>
+            <name>Map2/Image</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
