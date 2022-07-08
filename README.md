@@ -52,7 +52,7 @@ pip install casadi
 mkdir -p putn_ws/src
 cd putn_ws/src/
 catkin_init_workspace
-git clone $
+git clone https://github.com/jianzhuozhuTHU/putn.git
 cd ..
 rosdep install --from-paths src --ignore-src --rosdistro=melodic -y
 catkin_make
