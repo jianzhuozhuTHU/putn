@@ -40,7 +40,9 @@ PUTN: A Plane-fitting based Uneven Terrain Navigation Framework, Zhuozhu Jian, Z
 
 ```
 sudo apt-get install ros-melodic-ompl
-sudo apt-get install ros-melodic-robot-state-publisher
+sudo apt-get install ros-melodic-robot-state-publisher*
+sudo apt-get install ros-melodic-controller*
+sudo apt-get install ros-melodic-joint-state-controller*
 sudo apt-get install ros-melodic-eigen*
 sudo apt-get install ros-melodic-velodyne*
 pip install casadi
@@ -93,6 +95,9 @@ Moving around:
 
 i : switch to autonomous navigation mode
 ```
+<p align = "center">
+<img src="pictures/simulation.gif" width = "600" height = "300" border="5" />
+</p>
 
 Before PUTN is working, you should:
 
