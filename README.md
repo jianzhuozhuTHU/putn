@@ -96,7 +96,7 @@ Moving around:
 i : switch to autonomous navigation mode
 ```
 <p align = "center">
-<img src="pictures/simulation.gif" width = "600" height = "300" border="5" />
+<img src="pictures/simulation.gif" width = "800" height = "400" border="5" />
 </p>
 
 Before PUTN is working, you should:
