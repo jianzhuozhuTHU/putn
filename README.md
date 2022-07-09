@@ -102,7 +102,7 @@ i : switch to autonomous navigation mode
 Before PUTN is working, you should:
 
 1. Use the keyboard to control the robot to the ground, until RRT tree generation
-2. use "3D Goal" on the RVIZ interface to choose a goal point
+2. Use "3D Goal" on the RVIZ interface to choose a goal point
 3. Press "i" to switch to autonomous navigation mode
 
 then you can see the robot start to move towards the goal point.
