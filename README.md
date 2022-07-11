@@ -109,7 +109,7 @@ then you can see the robot start to move towards the goal point.
 
 ### 3.2. Real Scenarios
 
-[Scout 2.0](https://www.agilex.ai/index/product/id/2?lang=zh-cn), four-wheel-drive mobile robot is used for the experiment. The lidar sensor is [OS0-128](https://ouster.com/products/scanning-lidar/os0-sensor/), and the computational hardware is [Intel® NUC](https://www.intel.com/content/www/us/en/products/details/nuc.html) with an i5 2.4GHz CPU and 16GB memory. PUTN algorithm sends instructions to the robot in the form of ROS topic ([geometry_msgs/Twist Message](geometry_msgs/Twist Message)), and Scout 2.0 can be replaced by other four-wheel-drive mobile robots.
+[Scout 2.0](https://www.agilex.ai/index/product/id/2?lang=zh-cn), four-wheel-drive mobile robot is used for the experiment. The lidar sensor is [OS0-128](https://ouster.com/products/scanning-lidar/os0-sensor/), and the computational hardware is [Intel® NUC](https://www.intel.com/content/www/us/en/products/details/nuc.html) with an i5 2.4GHz CPU and 16GB memory. PUTN algorithm sends instructions to the robot in the form of ROS topic ([geometry_msgs/Twist Message](http://wiki.ros.org/geometry_msgs)), and Scout 2.0 can be replaced by other four-wheel-drive mobile robots.
 
 <p align = "center">
 <img src="pictures/platform.png" width = "400" height = "200" border="5" />
