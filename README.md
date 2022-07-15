@@ -43,6 +43,7 @@ sudo apt-get install ros-melodic-ompl
 sudo apt-get install ros-melodic-robot-state-publisher*
 sudo apt-get install ros-melodic-joint-state-controller*
 sudo apt-get install ros-melodic-controller*
+sudo apt-get install ros-melodic-velocity-controllers*
 sudo apt-get install ros-melodic-eigen*
 sudo apt-get install ros-melodic-velodyne*
 pip install casadi
