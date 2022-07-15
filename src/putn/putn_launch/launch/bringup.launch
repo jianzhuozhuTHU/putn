@@ -15,7 +15,7 @@
       <remap from="~waypoints"       to="/waypoint_generator/waypoints"/>
       <remap from="~map"             to="/laser_cloud_map"/> 
 
-      <rosparam command="load" file="$(find putn)/config/for_simulation/$(arg scene).yaml"/>
+      <rosparam command="load" file="$(find putn)/config/for_real_scenarios/general.yaml"/>
   </node>
 
   <node pkg="putn" type="local_obs_node" name="local_obs_node" output="screen" required = "true">
