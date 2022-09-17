@@ -1,5 +1,16 @@
 # PUTN
 
+# LVI-SAM-LIVOX usage
+<p align = "center">
+<img src="pictures/lvisam_putn.gif" width = "600" height = "300" border="5" />
+</p>
+
+https://github.com/jianhengLiu/LVI-SAM-LIVOX
+```
+roslaunch putn_launch simulation.launch scene:="maze"
+roslaunch lvi_sam run_putn.launch
+```
+
 PUTN: A Plane-fitting based Uneven Terrain Navigation Framework.
 
 **PUTN** is a plane-fitting based uneven terrain navigation framework, which allows **UGV** to traverse different kinds of **unstructured** and **complex** environments outdoors. 
