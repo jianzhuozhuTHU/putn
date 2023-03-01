@@ -148,6 +148,3 @@ For commercial inquiries, please contact Zhuozhu Jian (jzz21@mails.tsinghua.edu.
 
 
 
-[![Security Status](https://www.murphysec.com/platform3/v3/badge/1617249797778472960.svg?t=1)](https://www.murphysec.com/accept?code=d319b1f3927bbc1cf9e79cf214f725f4&type=1&from=2&t=2)
-
-
